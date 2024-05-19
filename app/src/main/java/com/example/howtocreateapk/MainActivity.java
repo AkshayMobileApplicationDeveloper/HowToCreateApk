@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -20,8 +21,11 @@ public class MainActivity extends AppCompatActivity {
     ElasticButton btnLogout;
     ListView ListViewItem;
     Spinner spinner;
+    AutoCompleteTextView Txt_Search;
     ArrayList<String> arrName= new ArrayList<>();
     ArrayList<String> arrIds= new ArrayList<>();
+    ArrayList<String> ArrayPeogrammingLanguage= new ArrayList<>();
+
 
     //int [] arrNameList=new int[]{12,34,56,34,56};
 
@@ -34,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         btnLogout=findViewById(R.id.btnLogout);
         ListViewItem=findViewById(R.id.ListViewItem);
         spinner=findViewById(R.id.Spainner);
+        Txt_Search=findViewById(R.id.Txt_Search);
+
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,5 +100,23 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayAdapter<String>adapterArrayspinnerIds= new ArrayAdapter<>(getApplication(),android.R.layout.simple_list_item_1,arrIds);
         spinner.setAdapter(adapterArrayspinnerIds);
+
+
+
+        /*
+        AutoCompleteTextView
+         */
+        ArrayPeogrammingLanguage.add("C");
+        ArrayPeogrammingLanguage.add("Java");
+        ArrayPeogrammingLanguage.add("PHP");
+        ArrayPeogrammingLanguage.add("Dart");
+        ArrayPeogrammingLanguage.add("Python");
+        ArrayPeogrammingLanguage.add("C++");
+        ArrayPeogrammingLanguage.add("JavaScript");
+
+        ArrayAdapter<String> adapterProgrammingLanguage=new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1,ArrayPeogrammingLanguage);
+        Txt_Search.setAdapter(adapterProgrammingLanguage);
+        Txt_Search.setThreshold(1);
+
     }
 }
