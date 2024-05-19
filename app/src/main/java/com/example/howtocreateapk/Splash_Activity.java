@@ -24,7 +24,7 @@ public class Splash_Activity extends AppCompatActivity {
                 Boolean check=preferences.getBoolean("flag",false);
 
 
-                if(!check){
+                if(check){
                     Intent intent=new Intent(getApplicationContext(),LogIn_Activity.class);
                     startActivity(
                             intent
