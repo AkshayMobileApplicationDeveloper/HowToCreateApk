@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.skydoves.elasticviews.ElasticButton;
 
@@ -16,9 +19,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     ElasticButton btnLogout;
     ListView ListViewItem;
-
-
+    Spinner spinner;
     ArrayList<String> arrName= new ArrayList<>();
+    ArrayList<String> arrIds= new ArrayList<>();
 
     //int [] arrNameList=new int[]{12,34,56,34,56};
 
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnLogout=findViewById(R.id.btnLogout);
         ListViewItem=findViewById(R.id.ListViewItem);
+        spinner=findViewById(R.id.Spainner);
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +65,34 @@ public class MainActivity extends AppCompatActivity {
         arrName.add("Sandeep");
         arrName.add("Aman");
 
-        ArrayAdapter<String> adapterName= new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1,arrName   );
+        ArrayAdapter<String> adapterName= new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_activated_1,arrName   );
         ListViewItem.setAdapter(adapterName);
+
+
+        ListViewItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0){
+                    Toast.makeText(MainActivity.this, "Good", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        /*
+        Spinner
+         */
+
+        arrIds.add("Adhar card");
+        arrIds.add("Pan Card");
+        arrIds.add("Voter Card");
+        arrIds.add("Driving  License Card");
+        arrIds.add("Ration Card");
+        arrIds.add("Class 10th Marksheet ");
+        arrIds.add("Class 12th Marksheet ");
+        arrIds.add("");
+
+
+        ArrayAdapter<String>adapterArrayspinnerIds= new ArrayAdapter<>(getApplication(),android.R.layout.simple_list_item_1,arrIds);
+        spinner.setAdapter(adapterArrayspinnerIds);
     }
 }
