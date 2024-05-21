@@ -8,12 +8,15 @@
     android:layout_height="match_parent"
     tools:context=".LogIn_Activity">
 
-    <com.skydoves.elasticviews.ElasticButton
-        android:id="@+id/BtnLogin"
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login Page"
         android:layout_centerInParent="true"
-        tools:layout_editor_absoluteX="189dp"
-        tools:layout_editor_absoluteY="369dp" />
+        android:layout_height="wrap_content">
+        <com.skydoves.elasticviews.ElasticButton
+            android:id="@+id/BtnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login Page"
+             />
+    </ScrollView>
 </RelativeLayout>
