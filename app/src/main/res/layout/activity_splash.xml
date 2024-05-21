@@ -8,12 +8,16 @@
     tools:context=".Splash_Activity">
 
 
-    <ImageView
-        android:id="@+id/IdLogoApp"
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/play_store_512"/>
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/IdLogoApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/play_store_512"/>
+    </ScrollView>
 
 
 </RelativeLayout>

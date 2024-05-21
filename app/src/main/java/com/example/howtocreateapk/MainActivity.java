@@ -97,10 +97,8 @@ public class MainActivity extends AppCompatActivity {
         arrIds.add("Class 12th Marksheet ");
         arrIds.add("");
 
-
         ArrayAdapter<String>adapterArrayspinnerIds= new ArrayAdapter<>(getApplication(),android.R.layout.simple_list_item_1,arrIds);
         spinner.setAdapter(adapterArrayspinnerIds);
-
 
 
         /*
