@@ -30,7 +30,7 @@
                     android:id="@+id/ListViewItem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"/>
+                   />
 
             </RelativeLayout>
             <RelativeLayout
@@ -63,7 +63,18 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="10dp"
                 android:hint="Search here......"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_below="@id/Txt_Search"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginHorizontal="10dp"
+                app:cardElevation="11dp"
+                android:layout_marginVertical="4dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="#BBA6E1"/>
         </RelativeLayout>
+
     </ScrollView>
 
 
