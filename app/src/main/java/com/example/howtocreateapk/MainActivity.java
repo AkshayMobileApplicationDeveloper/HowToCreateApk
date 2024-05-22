@@ -1,6 +1,7 @@
 package com.example.howtocreateapk;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     ElasticButton btnLogout;
     ListView ListViewItem;
+    CardView cardView;
     Spinner spinner;
     AutoCompleteTextView Txt_Search;
     ArrayList<String> arrName= new ArrayList<>();
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         ListViewItem=findViewById(R.id.ListViewItem);
         spinner=findViewById(R.id.Spainner);
         Txt_Search=findViewById(R.id.Txt_Search);
+        cardView=findViewById(R.id.CardView);
+
 
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         arrName.add("Sandeep");
         arrName.add("Aman");
 
-        ArrayAdapter<String> adapterName= new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_activated_1,arrName   );
+        ArrayAdapter<String> adapterName= new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_activated_1,arrName );
         ListViewItem.setAdapter(adapterName);
 
 
@@ -115,6 +119,17 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterProgrammingLanguage=new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1,ArrayPeogrammingLanguage);
         Txt_Search.setAdapter(adapterProgrammingLanguage);
         Txt_Search.setThreshold(1);
+
+        /***
+         * cardView
+         */
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),ListActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
