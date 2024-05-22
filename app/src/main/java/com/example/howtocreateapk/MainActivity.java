@@ -2,6 +2,8 @@ package com.example.howtocreateapk;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +16,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.howtocreateapk.Adapter.ContactAdapter;
+import com.example.howtocreateapk.Model.ModelChat;
 import com.skydoves.elasticviews.ElasticButton;
 
 import java.util.ArrayList;
@@ -24,9 +28,11 @@ public class MainActivity extends AppCompatActivity {
     CardView cardView;
     Spinner spinner;
     AutoCompleteTextView Txt_Search;
+    RecyclerView recyclerView;
     ArrayList<String> arrName= new ArrayList<>();
     ArrayList<String> arrIds= new ArrayList<>();
     ArrayList<String> ArrayPeogrammingLanguage= new ArrayList<>();
+    ArrayList<ModelChat> arrChat=new ArrayList<>();
 
 
     //int [] arrNameList=new int[]{12,34,56,34,56};
@@ -42,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         spinner=findViewById(R.id.Spainner);
         Txt_Search=findViewById(R.id.Txt_Search);
         cardView=findViewById(R.id.CardView);
+        recyclerView=findViewById(R.id.RecyclerView);
 
 
 
@@ -130,6 +137,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        /****
+         * RecyclerView
+         */
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        /**
+        ModelChat chat =new ModelChat("Pooja Sharma",R.drawable.poja,"6200305994","Hello :) \n I am tired right now \n but I will talk to you","9:34 PM");
+
+         **/
+        arrChat.add(new ModelChat("Pooja Sharma",R.drawable.i,"6200305994","Hello :) \n I am tired right now \n but I will talk to you","9:34 PM"));
+        arrChat.add(new ModelChat("Neha Chaudhary","R.drawable.neha","6200305994","Hello :) \n Good evening  \n Are you busy ....n , I know","2:34 PM"));
+        arrChat.add(new ModelChat("Akshay Kumar Prajapati","R.drawable.il","6200305994"," G","2:07 PM"));
+        arrChat.add(new ModelChat("Sawati G Web Se","R.drawable.i","6200305994","Almost Project has been completeed","12:34 AM"));
+
+        ContactAdapter contactAdapter=new ContactAdapter(this,arrChat);
+        recyclerView.setAdapter(contactAdapter);
 
     }
 }
