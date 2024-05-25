@@ -2,9 +2,13 @@ package com.example.howtocreateapk;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.RouteListingPreference;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,9 +18,11 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+
 import com.skydoves.elasticviews.ElasticButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     ElasticButton btnLogout;
@@ -28,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> arrName= new ArrayList<>();
     ArrayList<String> arrIds= new ArrayList<>();
     ArrayList<String> ArrayPeogrammingLanguage= new ArrayList<>();
+    RecyclerView idRecyclerView;
+
+
 
 
 
@@ -44,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         spinner=findViewById(R.id.Spainner);
         Txt_Search=findViewById(R.id.Txt_Search);
         cardView=findViewById(R.id.CardView);
-
+        idRecyclerView=findViewById(R.id.RecyclerView);
 
 
 
@@ -133,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
 
     }
