@@ -2,13 +2,13 @@ package com.example.howtocreateapk;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.RouteListingPreference;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +19,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
+import com.example.howtocreateapk.Adapter.ContactRecyclerViewAdapter;
+import com.example.howtocreateapk.Model.ContactModel;
 import com.skydoves.elasticviews.ElasticButton;
 
 import java.util.ArrayList;
@@ -37,10 +39,12 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView idRecyclerView;
 
 
+    ArrayList<ContactModel> contactModelArrayList =new ArrayList<>();
 
 
 
-    //int [] arrNameList=new int[]{12,34,56,34,56};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,6 +146,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        /**
+         * RecyclerView
+         */
+
+
+        contactModelArrayList.add(new ContactModel(R.drawable.neha,"Neha ","8521616730","Helllo , Let them to go college","10:00 AM"));
+        contactModelArrayList.add(new ContactModel(R.drawable.poja,"Ankita ","852616730","Helllo ,You have to come here","10:00 AM"));
+        contactModelArrayList.add(new ContactModel(R.drawable.i,"Kritika ","852161730","Helllo , i am doubtful","10:00 AM"));
+        idRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ContactRecyclerViewAdapter contactRecyclerViewAdapter=new ContactRecyclerViewAdapter(getApplicationContext(),contactModelArrayList);
+        idRecyclerView.setAdapter(contactRecyclerViewAdapter);
+
 
 
     }
