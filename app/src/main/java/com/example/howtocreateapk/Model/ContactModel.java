@@ -16,6 +16,12 @@ public class ContactModel {
         this.idTextTiming = idTextTiming;
     }
 
+    public ContactModel(String idTextViewName, String idTextViewContact, String idTextViewMsg, String idTextTiming) {
+        this.idTextViewName = idTextViewName;
+        this.idTextViewContact = idTextViewContact;
+        this.idTextViewMsg = idTextViewMsg;
+        this.idTextTiming = idTextTiming;
+    }
 
     public int getIdImageViewPro() {
         return idImageViewPro;
