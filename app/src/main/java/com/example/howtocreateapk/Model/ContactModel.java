@@ -1,65 +1,59 @@
 package com.example.howtocreateapk.Model;
 
+import android.net.Uri;
+
 public class ContactModel {
-    int idImageViewPro;
-    String idTextViewName;
-    String idTextViewContact;
-    String idTextViewMsg;
-    String idTextTiming;
+    private Object profileImage;
+    private String name;
+    private String phone;
+    private String message;
+    private String time;
 
-
-    public ContactModel(int idImageViewPro, String idTextViewName, String idTextViewContact, String idTextViewMsg, String idTextTiming) {
-        this.idImageViewPro = idImageViewPro;
-        this.idTextViewName = idTextViewName;
-        this.idTextViewContact = idTextViewContact;
-        this.idTextViewMsg = idTextViewMsg;
-        this.idTextTiming = idTextTiming;
+    public ContactModel(Object profileImage, String name, String phone, String message, String time) {
+        this.profileImage = profileImage;
+        this.name = name;
+        this.phone = phone;
+        this.message = message;
+        this.time = time;
     }
 
-    public ContactModel(String idTextViewName, String idTextViewContact, String idTextViewMsg, String idTextTiming) {
-        this.idTextViewName = idTextViewName;
-        this.idTextViewContact = idTextViewContact;
-        this.idTextViewMsg = idTextViewMsg;
-        this.idTextTiming = idTextTiming;
+    public Object getProfileImage() {
+        return profileImage;
     }
 
-    public int getIdImageViewPro() {
-        return idImageViewPro;
+    public void setProfileImage(Object profileImage) {
+        this.profileImage = profileImage;
     }
 
-    public void setIdImageViewPro(int idImageViewPro) {
-        this.idImageViewPro = idImageViewPro;
+    public String getName() {
+        return name;
     }
 
-    public String getIdTextViewName() {
-        return idTextViewName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setIdTextViewName(String idTextViewName) {
-        this.idTextViewName = idTextViewName;
+    public String getPhone() {
+        return phone;
     }
 
-    public String getIdTextViewContact() {
-        return idTextViewContact;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public void setIdTextViewContact(String idTextViewContact) {
-        this.idTextViewContact = idTextViewContact;
+    public String getMessage() {
+        return message;
     }
 
-    public String getIdTextViewMsg() {
-        return idTextViewMsg;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public void setIdTextViewMsg(String idTextViewMsg) {
-        this.idTextViewMsg = idTextViewMsg;
+    public String getTime() {
+        return time;
     }
 
-    public String getIdTextTiming() {
-        return idTextTiming;
-    }
-
-    public void setIdTextTiming(String idTextTiming) {
-        this.idTextTiming = idTextTiming;
+    public void setTime(String time) {
+        this.time = time;
     }
 }
