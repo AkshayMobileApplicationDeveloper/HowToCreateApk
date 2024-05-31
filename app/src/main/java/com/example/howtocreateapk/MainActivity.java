@@ -35,7 +35,6 @@ import com.skydoves.elasticviews.ElasticButton;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView profile_image;
     EditText name_input, contact_input, time_input, message_input;
     private final int Gallery_request_code = 100;
+    private Uri selectedImageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog dialog = new Dialog(MainActivity.this);
+                Dialog dialog = new Dialog(MainActivity.this); // Use the current activity context
                 dialog.setContentView(R.layout.add_contact);
                 submit_button = dialog.findViewById(R.id.submit_button);
                 name_input = dialog.findViewById(R.id.name_input);
@@ -186,13 +186,14 @@ public class MainActivity extends AppCompatActivity {
                         String number = contact_input.getText().toString();
                         String time = time_input.getText().toString();
                         String message = message_input.getText().toString();
-                        Uri profileUri = (Uri) profile_image.getTag();
 
-                        if (!name.isEmpty() && !number.isEmpty() && !time.isEmpty() && !message.isEmpty() && profileUri != null) {
-                            contactModelArrayList.add(new ContactModel(profileUri, name, number, message, time));
+                        Uri profile = selectedImageUri; // Use the selected image URI
+
+                        if (!name.isEmpty() && !number.isEmpty() && !time.isEmpty() && !message.isEmpty() && profile != null) {
+                            contactModelArrayList.add(new ContactModel(profile, name, number, message, time));
                             contactRecyclerViewAdapter.notifyItemInserted(contactModelArrayList.size() - 1);
                             idRecyclerView.scrollToPosition(contactModelArrayList.size() - 1);
-                            dialog.dismiss();
+                            dialog.dismiss(); // Close the dialog after adding the contact
                         } else {
                             Toast.makeText(MainActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                         }
@@ -202,7 +203,6 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-
         TimeChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -244,9 +244,9 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == Gallery_request_code) {
-                Uri imageUri = data.getData();
-                profile_image.setImageURI(imageUri);
-                profile_image.setTag(imageUri);  // Store the image URI as a tag
+                selectedImageUri = data.getData();
+                profile_image.setImageURI(selectedImageUri);
+                profile_image.setTag(selectedImageUri);  // Store the image URI as a tag
             }
         }
     }

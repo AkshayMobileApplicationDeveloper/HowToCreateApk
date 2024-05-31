@@ -41,6 +41,7 @@ public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecy
         } else if (contactModel.getProfileImage() instanceof Uri) {
             holder.profileImage.setImageURI((Uri) contactModel.getProfileImage());
         }
+
         holder.name.setText(contactModel.getName());
         holder.phone.setText(contactModel.getPhone());
         holder.message.setText(contactModel.getMessage());
@@ -59,10 +60,10 @@ public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecy
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             profileImage = itemView.findViewById(R.id.profile_image);
-            name = itemView.findViewById(R.id.idTextViewName);
-            phone = itemView.findViewById(R.id.idTextViewContact);
-            message = itemView.findViewById(R.id.idTextViewMsg);
-            time = itemView.findViewById(R.id.idTextTiming);
+            name = itemView.findViewById(R.id.name);
+            phone = itemView.findViewById(R.id.phone);
+            message = itemView.findViewById(R.id.message);
+            time = itemView.findViewById(R.id.time);
         }
     }
 }

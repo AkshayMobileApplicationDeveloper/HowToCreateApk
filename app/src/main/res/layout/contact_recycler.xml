@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <androidx.cardview.widget.CardView
         android:id="@+id/idCardView"
         android:layout_width="match_parent"
@@ -21,13 +22,13 @@
                 android:layout_centerVertical="true"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:id="@+id/idImageViewPro"
+                    android:id="@+id/profile_image"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/poja"/>
             </RelativeLayout>
             <TextView
-                android:id="@+id/idTextViewName"
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Neha Kumari Pandey "
@@ -39,11 +40,11 @@
                 android:paddingStart="20dp"/>
 
             <TextView
-                android:id="@+id/idTextViewContact"
+                android:id="@+id/phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:layout_below="@id/idTextViewName"
+                android:layout_below="@id/name"
                 android:layout_toRightOf="@id/RelativeLayoutImg"
                 android:paddingStart="20dp"
                 android:fontFamily="@font/cambo"
@@ -53,11 +54,11 @@
                 android:textStyle="bold" />
 
             <TextView
-            android:id="@+id/idTextViewMsg"
+            android:id="@+id/message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_below="@id/idTextViewContact"
+            android:layout_below="@id/phone"
             android:layout_toRightOf="@id/RelativeLayoutImg"
             android:paddingStart="20dp"
             android:fontFamily="@font/cambo"
@@ -67,7 +68,7 @@
             android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/idTextTiming"
+                android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="8:24 PM"

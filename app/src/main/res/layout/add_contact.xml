@@ -1,81 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="500dp"
-    android:background="@drawable/iloveyou"
-    android:padding="16dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
     tools:context=".MainActivity">
 
-
-    <!-- ImageView for the image -->
-    <ImageView
-        android:id="@+id/profile_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/poja"
-        />
-
-    <!-- EditText for the Name -->
-    <EditText
-        android:id="@+id/name_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/profile_image"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/edit_text_background"
-        android:hint="Name"
-        android:inputType="textPersonName" />
-
-    <!-- EditText for the Contact Number -->
-    <EditText
-        android:id="@+id/contact_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/name_input"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/edit_text_background"
-        android:hint="Contact Number"
-        android:inputType="phone" />
-
-
-    <!-- EditText for the Contact Number -->
-    <EditText
-        android:id="@+id/time_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/contact_input"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/edit_text_background"
-        android:hint="Time"
-         />
-
-    <!-- EditText for the Message -->
-    <EditText
-        android:id="@+id/message_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/time_input"
-        android:layout_marginTop="16dp"
-        android:hint="Message"
-        android:background="@drawable/edit_text_background"
-        android:inputType="textMultiLine"
-        android:minLines="3" />
-
-    <!-- Button to submit the form -->
-    <com.skydoves.elasticviews.ElasticButton
-        android:id="@+id/submit_button"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/message_input"
-        android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"
-        android:background="@color/design_default_color_primary"
-        android:fontFamily="@font/cambo"
-        android:textSize="18dp"
-        android:textColor="@color/white"
-        android:text="Submit" />
+        android:paddingHorizontal="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="4dp"
+        android:background="#D6D3D3"
+        android:layout_height="wrap_content">
 
-</RelativeLayout>
+        <!-- ImageView for the image -->
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/poja"
+            />
+
+        <!-- EditText for the Name -->
+        <EditText
+            android:id="@+id/name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_image"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Name"
+            android:inputType="textPersonName" />
+
+        <!-- EditText for the Contact Number -->
+        <EditText
+            android:id="@+id/contact_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name_input"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Contact Number"
+            android:inputType="phone" />
+
+
+        <!-- EditText for the Contact Number -->
+        <EditText
+            android:id="@+id/time_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/contact_input"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Time"
+            />
+
+        <!-- EditText for the Message -->
+        <EditText
+            android:id="@+id/message_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/time_input"
+            android:layout_marginTop="16dp"
+            android:hint="Message"
+            android:background="@drawable/edit_text_background"
+            android:inputType="textMultiLine"
+            android:minLines="3" />
+
+        <!-- Button to submit the form -->
+        <com.skydoves.elasticviews.ElasticButton
+            android:id="@+id/submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/message_input"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/design_default_color_primary"
+            android:fontFamily="@font/cambo"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            app:button_cornerRadius="25dp"
+            android:text="Submit" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
