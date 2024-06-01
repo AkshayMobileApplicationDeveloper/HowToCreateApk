@@ -67,27 +67,104 @@
                           android:paddingHorizontal="10dp"
                           android:hint="Search here......"/>
 
-                      <androidx.cardview.widget.CardView
-                          android:id="@+id/CardView"
-                          android:layout_below="@id/Txt_Search"
+                      <RelativeLayout
+                          android:id="@+id/idRelativeLayout"
+                          android:layout_below="@+id/Txt_Search"
                           android:layout_width="match_parent"
-                          android:layout_height="100dp"
-                          android:layout_marginHorizontal="10dp"
-                          app:cardElevation="11dp"
-                          android:layout_marginVertical="4dp"
-                          app:cardCornerRadius="20dp"
-                          app:cardBackgroundColor="#BBA6E1"/>
+                          android:gravity="center"
+                          android:layout_height="wrap_content"
+                          android:padding="10dp">
+                          <RelativeLayout
+                              android:id="@+id/RelativeLayoutImg"
+                              android:layout_width="wrap_content"
+                              android:layout_centerVertical="true"
+                              android:layout_height="wrap_content">
+                              <ImageView
+                                  android:id="@+id/idImageViewPro"
+                                  android:layout_width="80dp"
+                                  android:layout_height="80dp"
+                                  android:src="@drawable/iloveyou"/>
+                          </RelativeLayout>
+                          <TextView
+                              android:id="@+id/idTextViewName"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="Neha u "
+                              android:layout_toRightOf="@id/RelativeLayoutImg"
+                              android:textSize="18dp"
+                              android:fontFamily="@font/cambo"
+                              android:textStyle="bold"
+                              android:textColor="@color/design_default_color_primary_dark"
+                              android:paddingStart="20dp"/>
+
+                          <TextView
+                              android:id="@+id/idTextViewContact"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginTop="4dp"
+                              android:layout_below="@id/idTextViewName"
+                              android:layout_toRightOf="@id/RelativeLayoutImg"
+                              android:paddingStart="20dp"
+                              android:fontFamily="@font/cambo"
+                              android:text="8987918309"
+                              android:textColor="@color/design_default_color_primary_dark"
+                              android:textSize="16dp"
+                              android:textStyle="bold" />
+
+                          <TextView
+                              android:id="@+id/idTextViewMsg"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginTop="4dp"
+                              android:layout_below="@id/idTextViewContact"
+                              android:layout_toRightOf="@id/RelativeLayoutImg"
+                              android:paddingStart="20dp"
+                              android:fontFamily="@font/cambo"
+                              android:text="Hii ! :) \n I will talk to you next morning "
+                              android:textColor="@color/design_default_color_primary_dark"
+                              android:textSize="16dp"
+                              android:textStyle="bold" />
+
+                          <TextView
+                              android:id="@+id/idTextTiming"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="8:24 PM"
+                              android:layout_alignParentEnd="true"
+                              android:textSize="18dp"
+                              android:textColor="@color/design_default_color_primary_dark"
+                              android:fontFamily="@font/cambo"
+                              android:textStyle="bold"/>
+                      </RelativeLayout>
 
                       <androidx.recyclerview.widget.RecyclerView
                           android:id="@+id/RecyclerView"
                           android:background="#E7EAED"
                           android:layout_marginVertical="10dp"
-                          android:layout_below="@id/CardView"
+                          android:layout_below="@id/idRelativeLayout"
                           android:layout_width="match_parent"
                           android:layout_height="wrap_content"/>
 
                   </RelativeLayout>
                </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/OpenDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:tint="@color/white"
+        android:src="@drawable/baseline_add_24"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"
+        android:layout_alignParentEnd="true"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/TimeChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"/>
+
 
 
 
