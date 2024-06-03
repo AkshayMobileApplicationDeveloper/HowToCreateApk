@@ -1,11 +1,14 @@
 package com.example.howtocreateapk.Adapter;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,6 +123,32 @@ public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecy
                 });
 
                 dialog.show();
+            }
+        });
+
+        holder.idRelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(context)
+                        .setTitle("Delete Contact")
+                        .setMessage("Are you sure you want to delete the contact ")
+                        .setIcon(R.drawable.delete_svgrepo_com)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                contactModelArrayList.remove(position);
+                                notifyItemRemoved(position);
+                                Log.i("Tage","Contact is Deleted at "+position);
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.i("Tage","Contact isn't Deleted at "+position+ " Is it cancel ");
+                            }
+                        });
+                builder.show();
+                return false;
             }
         });
     }
