@@ -2,7 +2,6 @@ package com.example.howtocreateapk;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,7 +9,6 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -29,7 +27,6 @@ import android.widget.Toast;
 import com.example.howtocreateapk.Adapter.ContactRecyclerViewAdapter;
 import com.example.howtocreateapk.Model.ContactModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.timepicker.MaterialTimePicker;
 import com.skydoves.elasticviews.ElasticButton;
 
 import java.text.SimpleDateFormat;
@@ -40,7 +37,6 @@ import java.util.TimeZone;
 public class MainActivity extends AppCompatActivity {
     ElasticButton btnLogout, submit_button;
     TimePickerDialog timePickerDialog;
-    MaterialTimePicker timePicker;
     ListView ListViewItem;
     RelativeLayout idRelativeLayout;
     Spinner spinner;
@@ -56,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     EditText name_input, contact_input, time_input, message_input;
     private final int Gallery_request_code = 100;
     private Uri selectedImageUri;
+    private ContactRecyclerViewAdapter contactRecyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,58 +148,16 @@ public class MainActivity extends AppCompatActivity {
         contactModelArrayList.add(new ContactModel(R.drawable.i, "Kritika ", "852161730", "Helllo , i am doubtful", "10:00 AM"));
 
         idRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        ContactRecyclerViewAdapter contactRecyclerViewAdapter = new ContactRecyclerViewAdapter(getApplicationContext(), contactModelArrayList);
+        contactRecyclerViewAdapter = new ContactRecyclerViewAdapter(this, contactModelArrayList);
         idRecyclerView.setAdapter(contactRecyclerViewAdapter);
 
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog dialog = new Dialog(MainActivity.this); // Use the current activity context
-                dialog.setContentView(R.layout.add_contact);
-                submit_button = dialog.findViewById(R.id.submit_button);
-                name_input = dialog.findViewById(R.id.name_input);
-                profile_image = dialog.findViewById(R.id.profile_image);
-                contact_input = dialog.findViewById(R.id.contact_input);
-                time_input = dialog.findViewById(R.id.time_input);
-                message_input = dialog.findViewById(R.id.message_input);
-
-                time_input.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showTimePickerDialog();
-                    }
-                });
-                profile_image.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showImageGallery();
-                    }
-                });
-
-                submit_button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String name = name_input.getText().toString();
-                        String number = contact_input.getText().toString();
-                        String time = time_input.getText().toString();
-                        String message = message_input.getText().toString();
-
-                        Uri profile = selectedImageUri; // Use the selected image URI
-
-                        if (!name.isEmpty() && !number.isEmpty() && !time.isEmpty() && !message.isEmpty() && profile != null) {
-                            contactModelArrayList.add(new ContactModel(profile, name, number, message, time));
-                            contactRecyclerViewAdapter.notifyItemInserted(contactModelArrayList.size() - 1);
-                            idRecyclerView.scrollToPosition(contactModelArrayList.size() - 1);
-                            dialog.dismiss(); // Close the dialog after adding the contact
-                        } else {
-                            Toast.makeText(MainActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-                dialog.show();
+                openAddContactDialog();
             }
         });
+
         TimeChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -210,6 +165,53 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void openAddContactDialog() {
+        Dialog dialog = new Dialog(MainActivity.this); // Use the current activity context
+        dialog.setContentView(R.layout.add_contact);
+        submit_button = dialog.findViewById(R.id.submit_button);
+        name_input = dialog.findViewById(R.id.name_input);
+        profile_image = dialog.findViewById(R.id.profile_image);
+        contact_input = dialog.findViewById(R.id.contact_input);
+        time_input = dialog.findViewById(R.id.time_input);
+        message_input = dialog.findViewById(R.id.message_input);
+
+        time_input.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimePickerDialog();
+            }
+        });
+        profile_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showImageGallery();
+            }
+        });
+
+        submit_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = name_input.getText().toString();
+                String number = contact_input.getText().toString();
+                String time = time_input.getText().toString();
+                String message = message_input.getText().toString();
+
+                Uri profile = selectedImageUri; // Use the selected image URI
+
+                if (!name.isEmpty() && !number.isEmpty() && !time.isEmpty() && !message.isEmpty() && profile != null) {
+                    contactModelArrayList.add(new ContactModel(profile, name, number, message, time));
+                    contactRecyclerViewAdapter.notifyItemInserted(contactModelArrayList.size() - 1);
+                    idRecyclerView.scrollToPosition(contactModelArrayList.size() - 1);
+                    dialog.dismiss(); // Close the dialog after adding the contact
+                } else {
+                    Toast.makeText(MainActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        dialog.show();
     }
 
     private void showTimePickerDialog() {
@@ -243,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if (requestCode == Gallery_request_code) {
+            if (requestCode == Gallery_request_code && data != null) {
                 selectedImageUri = data.getData();
                 profile_image.setImageURI(selectedImageUri);
                 profile_image.setTag(selectedImageUri);  // Store the image URI as a tag
