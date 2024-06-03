@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -35,7 +37,7 @@ public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecy
     private Context context;
     private final int Gallery_request_code = 100;
     private ArrayList<ContactModel> contactModelArrayList;
-
+    private int lastpostion=-1;
     public ContactRecyclerViewAdapter(Context context, ArrayList<ContactModel> contactModelArrayList) {
         this.context = context;
         this.contactModelArrayList = contactModelArrayList;
@@ -124,12 +126,14 @@ public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecy
 
                 dialog.show();
             }
+
         });
+
 
         holder.idRelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(context)
+                AlertDialog.Builder builder = new AlertDialog.Builder(context)
                         .setTitle("Delete Contact")
                         .setMessage("Are you sure you want to delete the contact ")
                         .setIcon(R.drawable.delete_svgrepo_com)
@@ -138,19 +142,20 @@ public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecy
                             public void onClick(DialogInterface dialog, int which) {
                                 contactModelArrayList.remove(position);
                                 notifyItemRemoved(position);
-                                Log.i("Tage","Contact is Deleted at "+position);
+                                Log.i("Tage", "Contact is Deleted at " + position);
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Log.i("Tage","Contact isn't Deleted at "+position+ " Is it cancel ");
+                                Log.i("Tage", "Contact isn't Deleted at " + position + " Is it cancel ");
                             }
                         });
                 builder.show();
                 return false;
             }
         });
+        setAnimation(position, holder.itemView); // Corrected order of arguments
     }
 
     @Override
@@ -205,5 +210,15 @@ public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecy
     public void setImageUri(Uri uri, ImageView profile_image) {
         profile_image.setImageURI(uri);
         profile_image.setTag(uri);
+    }
+
+    public void setAnimation(int position, View viewToAnimation) {
+        if(position>lastpostion)
+        {
+            Animation slideIn = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
+            viewToAnimation.startAnimation(slideIn);
+            lastpostion=position;
+            Log.d("TAG", "setAnimation: Varification");
+        }
     }
 }
