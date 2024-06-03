@@ -146,6 +146,16 @@ public class MainActivity extends AppCompatActivity {
         contactModelArrayList.add(new ContactModel(R.drawable.neha, "Neha ", "8521616730", "Helllo , Let them to go college", "10:00 AM"));
         contactModelArrayList.add(new ContactModel(R.drawable.poja, "Ankita ", "852616730", "Helllo ,You have to come here", "10:00 AM"));
         contactModelArrayList.add(new ContactModel(R.drawable.i, "Kritika ", "852161730", "Helllo , i am doubtful", "10:00 AM"));
+        contactModelArrayList.add(new ContactModel(R.drawable.i, "Kritika A ", "852161730", "Helllo , i am doubtful", "10:00 AM"));
+        contactModelArrayList.add(new ContactModel(R.drawable.i, "Kritika B", "852161730", "Helllo , i am doubtful", "10:00 AM"));
+        contactModelArrayList.add(new ContactModel(R.drawable.i, "Kritika C", "852161730", "Helllo , i am doubtful", "10:00 AM"));
+        contactModelArrayList.add(new ContactModel(R.drawable.i, "Kritika D", "852161730", "Helllo , i am doubtful", "10:00 AM"));
+        contactModelArrayList.add(new ContactModel(R.drawable.i, "Kritika R", "852161730", "Helllo , i am doubtful", "10:00 AM"));
+        contactModelArrayList.add(new ContactModel(R.drawable.i, "Kritika E", "852161730", "Helllo , i am doubtful", "10:00 AM"));
+        contactModelArrayList.add(new ContactModel(R.drawable.i, "Kritika F", "852161730", "Helllo , i am doubtful", "10:00 AM"));
+        contactModelArrayList.add(new ContactModel(R.drawable.i, "Kritika G", "852161730", "Helllo , i am doubtful", "10:00 AM"));
+        contactModelArrayList.add(new ContactModel(R.drawable.i, "Kritika H", "852161730", "Helllo , i am doubtful", "10:00 AM"));
+        contactModelArrayList.add(new ContactModel(R.drawable.i, "Kritika I", "852161730", "Helllo , i am doubtful", "10:00 AM"));
 
         idRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         contactRecyclerViewAdapter = new ContactRecyclerViewAdapter(this, contactModelArrayList);
