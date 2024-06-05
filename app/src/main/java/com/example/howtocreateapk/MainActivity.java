@@ -1,7 +1,9 @@
 package com.example.howtocreateapk;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +14,9 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -53,12 +58,13 @@ public class MainActivity extends AppCompatActivity {
     private final int Gallery_request_code = 100;
     private Uri selectedImageUri;
     private ContactRecyclerViewAdapter contactRecyclerViewAdapter;
+    Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
 
         btnLogout = findViewById(R.id.btnLogout);
         ListViewItem = findViewById(R.id.ListViewItem);
@@ -68,6 +74,21 @@ public class MainActivity extends AppCompatActivity {
         idRecyclerView = findViewById(R.id.RecyclerView);
         actionButton = findViewById(R.id.OpenDialog);
         TimeChange = findViewById(R.id.TimeChange);
+        toolbar=findViewById(R.id.toolbar);
+
+/*
+Step 1: Set up the toolbar
+ */
+   setSupportActionBar(toolbar);
+
+    // Step 2: Customize the toolbar
+   if (getSupportActionBar() != null) {
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    toolbar.setTitle("MyToolBar");
+    toolbar.setSubtitle("Sub Title");
+
+
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,6 +198,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void openAddContactDialog() {
         Dialog dialog = new Dialog(MainActivity.this); // Use the current activity context
         dialog.setContentView(R.layout.add_contact);
@@ -261,5 +284,38 @@ public class MainActivity extends AppCompatActivity {
                 profile_image.setTag(selectedImageUri);  // Store the image URI as a tag
             }
         }
+    }
+
+
+    /*
+    Option Menu Code
+     */
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        new MenuInflater(this).inflate(R.menu.option_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+       int itemId = item.getItemId();
+       if(itemId==R.id.option_menu_new){
+           Toast.makeText(this, "This is create a new File", Toast.LENGTH_SHORT).show();
+       } else if (itemId==R.id.option_open) {
+           Toast.makeText(this, "This is open the new file", Toast.LENGTH_SHORT).show();
+       }
+
+       else if(itemId==R.id.option_save){
+           Toast.makeText(this, "Save the file", Toast.LENGTH_SHORT).show();
+       }
+       else {
+           /*
+           if(itemId==android.R.id.home)
+
+            */
+           super.onBackPressed();
+       }
+        return super.onOptionsItemSelected(item);
     }
 }
